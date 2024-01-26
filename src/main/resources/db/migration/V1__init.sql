@@ -21,18 +21,18 @@ CREATE TABLE Team(
 
 
 CREATE TABLE Player (
-    Pesel VARCHAR(11) CHECK (Pesel REGEXP '^[0-9]{11}') PRIMARY KEY,
-    NameP VARCHAR (255) NOT NULL,
-    Surname VARCHAR (255) NOT NULL,
-    DateOfBirth DATE NOT NULL,
-    Nationallity VARCHAR (255) NOT NULL,
-    Height INT CHECK(Height>0),
-    WeightP INT CHECK(WeightP>0),
-    Hand VARCHAR (5),
-    Blade VARCHAR (255),
-    ImgURL VARCHAR(511) NOT NULL,
-    IdTeam INT,
-    FOREIGN KEY (IdTeam) REFERENCES Team (Id)
+                        Pesel VARCHAR(11) CHECK (Pesel REGEXP '^[0-9]{11}') PRIMARY KEY,
+                        NameP VARCHAR (255) NOT NULL,
+                        Surname VARCHAR (255) NOT NULL,
+                        DateOfBirth DATE NOT NULL,
+                        Nationallity VARCHAR (255) NOT NULL,
+                        Height INT CHECK(Height>0),
+                        WeightP INT CHECK(WeightP>0),
+                        Hand VARCHAR (5),
+                        Blade VARCHAR (255),
+                        ImgURL VARCHAR(511) NOT NULL,
+                        IdTeam INT,
+                        FOREIGN KEY (IdTeam) REFERENCES Team (Id)
 );
 
 ALTER TABLE Team
@@ -60,6 +60,6 @@ CREATE TABLE SinglesMatch (
     FOREIGN KEY (IdPlayerHome) REFERENCES Player(Pesel),
     IdPlayerGuest VARCHAR(255) NOT NULL ,
     FOREIGN KEY (IdPlayerGuest) REFERENCES Player(Pesel),
-    IdMatch INT NOT NULL,
-    FOREIGN KEY (IdMatch) REFERENCES Game (Id)
+    IdGame INT NOT NULL,
+    FOREIGN KEY (IdGame) REFERENCES Game (Id)
 );
