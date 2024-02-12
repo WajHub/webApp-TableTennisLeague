@@ -20,7 +20,7 @@ public class TeamRepository {
 
     public List<Team> getAll(){
         return jdbcTemplate.query(
-                "SELECT Team.Id, Team.nameT,(count(Game.Id)) AS numberOfMatches,\n" +
+                "SELECT Team.Id, Team.nameT,Team.logoURL,(count(Game.Id)) AS numberOfMatches,\n" +
                 "\t-- Number of Wins\n" +
                 "\t(count(CASE WHEN \n" +
                 "\t(Game.ResultHome > 2 AND Game.IdHome=Team.Id) OR (Game.ResultGuest > 2 AND Game.IdGuest=Team.Id)\n" +
@@ -38,6 +38,6 @@ public class TeamRepository {
                 "    END)) AS numberOfPoints\n" +
                 " FROM Team\n" +
                 "LEFT JOIN Game ON Team.Id=Game.IdHome OR Team.Id=Game.IdGuest\n" +
-                "group by Team.Id, Team.nameT;\n",BeanPropertyRowMapper.newInstance(Team.class));
+                "group by Team.Id, Team.nameT,Team.logoURL;\n",BeanPropertyRowMapper.newInstance(Team.class));
     }
 }

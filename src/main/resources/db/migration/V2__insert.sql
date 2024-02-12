@@ -6,7 +6,7 @@ INSERT INTO Hall (City, Postcode, Street, BuildingNumber, FanCapacity) VALUES
 
 -- AWF (id=1)
 INSERT INTO Team(NameT, YearOfFundation, Tables, Balls, LogoURL, IdHall, PeselCaptain) VALUES
-    ('Balta AWFiS', 2015, 'Butterfly', 'Butterfly', 'https://s-trojmiasto.pl/zdj/c/n/3/3156/600x0/3156857.webp',1,NULL);
+    ('Balta AWFiS', 2015, 'Butterfly', 'Butterfly', 'https://superliga.com.pl/images/zespoly/big/gdansk_big.png',1,NULL);
 
 INSERT INTO Player(Pesel, NameP, Surname, DateOfBirth,Nationallity, Height,WeightP,Hand,Blade,ImgURL,IdTeam) VALUES
     ('12345678999','Hubert','Wajda', '2018-11-18','Poland', 175, 65, 'right', 'Timo Boll ZLC', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNNb3ZktPA7kj7sZKpItq-ch-kjelgtCigpBq4GKwnXw&s',1);
@@ -22,9 +22,9 @@ UPDATE Team SET PeselCaptain = '12345678999' WHERE (Id = 1);
 
 -- Inserting Teams
 INSERT INTO Team(NameT, YearOfFundation, Tables, Balls, LogoURL, IdHall, PeselCaptain) VALUES
-     ('Golden Paddlers', 2008, 'DHS', 'DHS', 'https://example.com/golden_paddlers.jpg', 2, NULL),
-     ('Silver Smashers', 2012, 'Donic', 'Donic', 'https://example.com/silver_smashers.jpg', 3, NULL),
-     ('Bronze Ballers', 2016, 'Xiom', 'Xiom', 'https://example.com/bronze_ballers.jpg', 4, NULL);
+     ('Golden Paddlers', 2008, 'DHS', 'DHS', 'https://superliga.com.pl/images/zespoly/big/grodzisk_big.png', 2, NULL),
+     ('Silver Smashers', 2012, 'Donic', 'Donic', 'https://superliga.com.pl/images/zespoly/big/suchedniow_big.png', 3, NULL),
+     ('Bronze Ballers', 2016, 'Xiom', 'Xiom', 'https://superliga.com.pl/images/zespoly/big/LEBORK150.png', 4, NULL);
 
 -- Inserting Players
 INSERT INTO Player(Pesel, NameP, Surname, DateOfBirth,Nationallity, Height,WeightP,Hand,Blade,ImgURL,IdTeam) VALUES
