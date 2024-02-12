@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table</title>
+    <title>Teams - League Table</title>
     <link rel="stylesheet" typle="text/css" href="/css/style.css">
 </head>
 <body>
@@ -12,12 +12,20 @@
             <tr>
                 <th></th>
                 <th>Name</th>
+                <th>M</th>
+                <th>W</th>
+                <th>L</th>
+                <th>P</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="team, teamIter : ${teams}">
                 <td th:text="${teamIter.count}"></td>
                 <td th:text="${team.nameT}"></td>
+                <td th:text="${team.numberOfMatches}"></td>
+                <td th:text="${team.numberOfWins}"></td>
+                <td th:text="${team.numberOfLosses}"></td>
+                <td th:text="${team.numberOfPoints}"></td>
             </tr>
         </tbody>
     </table>

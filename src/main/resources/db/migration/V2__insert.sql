@@ -50,18 +50,13 @@ INSERT INTO Player(Pesel, NameP, Surname, DateOfBirth,Nationallity, Height,Weigh
 
 UPDATE Team SET PeselCaptain = '66677788811' WHERE (Id = 4);
 
-
-
 -- Inserting Games
-/*INSERT INTO Game (Round, DateOfMatch, NumberOfSupporters, ResultHome, ResultGuest, IdHome, IdGuest) VALUES
-      (1, '2024-03-01', 800, 3, 1, 1, 2),
-      (1, '2024-03-01', 900, 2, 3, 3, 2),
-      (2, '2024-03-08', 1000, 3, 0, 1, 3),
-      (2, '2024-03-08', 1200, 2, 3, 2, 3);
-
--- Inserting SinglesMatches
+INSERT INTO Game (Round, DateOfMatch, NumberOfSupporters, ResultHome, ResultGuest, IdHome, IdGuest) VALUES
+    (1, '2024-03-01', 800, NULL, NULL, 1, 2);
 INSERT INTO SinglesMatch (ResultPlayerHome, ResultPlayerGuest, IdPlayerHome, IdPlayerGuest, IdGame) VALUES
-      (11, 9, '12345678999', '55566677788', 1),
-      (8, 11, '99988877766', '55566677788', 2),
-      (11, 5, '12345678999', '99988877766', 3),
-      (7, 11, '55566677788', '99988877766', 4);*/
+     (3, 0, '12345678999', '55566677788', 1),
+     (0, 3, '99999999999', '11122233344', 1),
+     (3, 1, '88888888888', '99988877766', 1),
+     (3, 2, '12345678999', '11122233344', 1);
+UPDATE Game SET ResultHome=3, ResultGuest=1 WHERE (id=1);
+

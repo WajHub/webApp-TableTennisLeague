@@ -39,4 +39,12 @@ public class Team {
     @JoinColumn(name = "PeselCaptain")
     private Player player;
 
+    private int numberOfMatches;
+
+    private int numberOfWins;
+
+    private int numberOfLosses;
+
+    private int numberOfPoints;
+
 }
