@@ -30,4 +30,12 @@ public class Hall {
     @Column(name="FanCapacity",nullable = false)
     private Integer fanCapacity;
     // getters and setters
+
+    public Hall(String city, String postcode, String street, Integer buildingNumber, Integer fanCapacity) {
+        this.city = city;
+        this.postcode = postcode;
+        this.street = street;
+        this.buildingNumber = buildingNumber;
+        this.fanCapacity = fanCapacity;
+    }
 }

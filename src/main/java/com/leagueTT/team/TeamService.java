@@ -17,4 +17,6 @@ public class TeamService {
     public List<Team> getTeams(){
         return teamRepository.getAll();
     }
+
+    public Team getTeam(int id) { return teamRepository.getTeamById(id);}
 }

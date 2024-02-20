@@ -13,10 +13,11 @@ public class TeamRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-//    public List<Team> getAll(){
-//        return jdbcTemplate.query("Select * FROM Team",
-//                BeanPropertyRowMapper.newInstance(Team.class));
-//    }
+    public int save(Team team){
+        jdbcTemplate.update("INSERT INTO Team(nameT, yearOfFundation, tables, balls, logoURL, IdHall)" +
+                    "VALUES(?,?,?,?,?,?)",team.getNameT(),team.getYearOfFundation(),team.getTables(),team.getBalls(),team.getLogoURL(),team.getHall().getId());
+    return 1;
+    }
 
     public List<Team> getAll(){
         return jdbcTemplate.query(
@@ -39,5 +40,13 @@ public class TeamRepository {
                 " FROM Team\n" +
                 "LEFT JOIN Game ON Team.Id=Game.IdHome OR Team.Id=Game.IdGuest\n" +
                 "group by Team.Id, Team.nameT,Team.logoURL;\n",BeanPropertyRowMapper.newInstance(Team.class));
+    }
+
+    public Team getTeamById(int id){
+        return jdbcTemplate.queryForObject("SELECT * FROM Team WHERE Id=?", BeanPropertyRowMapper.newInstance(Team.class), id);
+    }
+
+    public void deleteAll() {
+        jdbcTemplate.update("DELETE FROM Team");
     }
 }

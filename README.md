@@ -16,6 +16,7 @@
 - Spring Data JPA
 - Thymeleaf
 - Flyway
+- H2 
 
 ## Database
 
