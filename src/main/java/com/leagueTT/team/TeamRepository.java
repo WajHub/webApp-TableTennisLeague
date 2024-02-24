@@ -1,5 +1,6 @@
 package com.leagueTT.team;
 
+import com.leagueTT.player.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,11 +15,12 @@ public class TeamRepository {
 
     public int save(Team team){
         jdbcTemplate.update("INSERT INTO Team(nameT, yearOfFundation, tables, balls, logoURL, IdHall)" +
-                    "VALUES(?,?,?,?,?,?)",team.getNameT(),team.getYearOfFundation(),team.getTables(),team.getBalls(),team.getLogoURL(),team.getHall().getId());
+                    "VALUES(?,?,?,?,?,?)",
+                team.getNameT(),team.getYearOfFundation(),team.getTables(),team.getBalls(),team.getLogoURL(),team.getHall().getId());
     return 1;
     }
 
-    // Wygrana 2pkt, przegrana 1pkt
+    // Win 2pkt, Loss 1pkt
     public List<Team> getAllTeams(){
         return jdbcTemplate.query("SELECT * FROM Team", BeanPropertyRowMapper.newInstance(Team.class));
     }
@@ -74,5 +76,10 @@ public class TeamRepository {
                         " FROM Team\n" +
                         "LEFT JOIN Game ON Team.Id=Game.IdHome OR Team.Id=Game.IdGuest\n" +
                         "group by Team.Id, Team.nameT,Team.logoURL;\n",BeanPropertyRowMapper.newInstance(Team.class));
+    }
+
+    public List<Player> getPlayersFromTeam(int idTeam) {
+        return jdbcTemplate.query("Select * FROM Player WHERE IdTeam=?",
+                BeanPropertyRowMapper.newInstance(Player.class), idTeam);
     }
 }

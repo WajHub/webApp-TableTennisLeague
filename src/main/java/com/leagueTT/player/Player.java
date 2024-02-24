@@ -17,7 +17,7 @@ public class Player {
     private String pesel;
 
     @Column(name = "NameP", nullable = false, length = 255)
-    private String name;
+    private String nameP;
 
     @Column(name = "Surname", nullable = false, length = 255)
     private String surname;

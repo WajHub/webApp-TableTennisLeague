@@ -8,17 +8,14 @@
 </head>
 <body>
     <div class="team-info">
-        <h2>Team Name</h2>
-        <img src="team_logo.jpg" alt="Team Logo">
+        <h2 th:text="${team.nameT}"></h2>
+        <img th:src="${team.logoURL}" alt="Team Logo">
     </div>
 
-    <div class="players-list">
-        <h3>Players List</h3>
+    <h3>Players List</h3>
+    <div th:each="player, playerIter : ${players}">
         <ul>
-            <li>Player 1</li>
-            <li>Player 2</li>
-            <li>Player 3</li>
-            <!-- Add more players as needed -->
+            <li th:text="${player.nameP+' '+player.surname}"></li>
         </ul>
     </div>
 </body>

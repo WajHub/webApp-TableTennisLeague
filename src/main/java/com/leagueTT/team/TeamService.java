@@ -1,5 +1,6 @@
 package com.leagueTT.team;
 
+import com.leagueTT.player.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,15 @@ public class TeamService {
         }
         return teams;
     }
+    public Team getTeam(int id) {
+        Team temp = teamRepository.getTeamById(id);
+        temp.setNumberOfWins(teamRepository.getNumberOfWinsByTeam(id));
+        temp.setNumberOfLosses(teamRepository.getNumberOfLosesByTeam(id));
+        temp.setNumberOfPoints(temp.getNumberOfLosses()+temp.getNumberOfWins()*2);
+        temp.setNumberOfMatches(teamRepository.getNumberOfMatchesByTeam(id));
+        return temp;}
 
-    public Team getTeam(int id) { return teamRepository.getTeamById(id);}
+    public List<Player> getPlayers(int idTeam){
+        return teamRepository.getPlayersFromTeam(idTeam);
+    }
 }
