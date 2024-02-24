@@ -47,7 +47,7 @@ public class Team {
 
     private int numberOfPoints;
 
-    public Team(String nameT, Integer yearOfFundation, String tables, String balls, String logoURL, Hall hall, Player player) {
+    public Team(String nameT, Integer  yearOfFundation, String tables, String balls, String logoURL, Hall hall, Player player) {
         this.nameT = nameT;
         this.yearOfFundation = yearOfFundation;
         this.tables = tables;

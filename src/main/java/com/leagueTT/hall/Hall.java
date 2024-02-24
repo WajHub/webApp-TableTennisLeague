@@ -38,4 +38,7 @@ public class Hall {
         this.buildingNumber = buildingNumber;
         this.fanCapacity = fanCapacity;
     }
+
+    public Hall() {
+    }
 }

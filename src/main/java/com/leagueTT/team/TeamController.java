@@ -19,6 +19,7 @@ public class TeamController {
 
     @GetMapping("")
     public String home(Model model){
+        teamService.getTeams();
         model.addAttribute("teams",teamService.getTeams());
         return "teams";
     }
