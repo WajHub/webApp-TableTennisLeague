@@ -11,7 +11,12 @@ import java.util.Date;
 @Entity
 @Table(name = "Player")
 public class Player {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
+    private Long id;
+
     @Check(constraints = "REGEXP_LIKE(pesel, '^[0-9]{11}')")
     @Column(name="Pesel")
     private String pesel;
@@ -25,7 +30,7 @@ public class Player {
     @Column(name = "DateOfBirth", nullable = false)
     private Date dateOfBirth;
 
-    @Column(name = "Nationallity", nullable = false, length = 255)
+    @Column(name = "Nationality", nullable = false, length = 255)
     private String nationality;
 
     @Column(name = "Height", nullable = false)

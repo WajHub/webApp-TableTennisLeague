@@ -16,27 +16,28 @@ CREATE TABLE Team(
     LogoURL VARCHAR (511) NOT NULL,
     IdHall INT,
     FOREIGN KEY (IdHall) REFERENCES Hall (Id),
-    PeselCaptain VARCHAR(255)
+    IdCaptain INT
 );
 
 
 CREATE TABLE Player (
-                        Pesel VARCHAR(11) CHECK (Pesel REGEXP '^[0-9]{11}') PRIMARY KEY,
-                        NameP VARCHAR (255) NOT NULL,
-                        Surname VARCHAR (255) NOT NULL,
-                        DateOfBirth DATE NOT NULL,
-                        Nationallity VARCHAR (255) NOT NULL,
-                        Height INT CHECK(Height>0),
-                        WeightP INT CHECK(WeightP>0),
-                        Hand VARCHAR (5),
-                        Blade VARCHAR (255),
-                        ImgURL VARCHAR(511) NOT NULL,
-                        IdTeam INT,
-                        FOREIGN KEY (IdTeam) REFERENCES Team (Id)
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Pesel VARCHAR(11) CHECK (Pesel REGEXP '^[0-9]{11}'),
+    NameP VARCHAR (255) NOT NULL,
+    Surname VARCHAR (255) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    Nationality VARCHAR (255) NOT NULL,
+    Height INT CHECK(Height>0),
+    WeightP INT CHECK(WeightP>0),
+    Hand VARCHAR (5),
+    Blade VARCHAR (255),
+    ImgURL VARCHAR(511) NOT NULL,
+    IdTeam INT,
+    FOREIGN KEY (IdTeam) REFERENCES Team (Id)
 );
 
 ALTER TABLE Team
-    ADD FOREIGN KEY (PeselCaptain) REFERENCES Player(Pesel);
+    ADD FOREIGN KEY (IdCaptain) REFERENCES Player(Id);
 
 CREATE TABLE Game (
     Id INT AUTO_INCREMENT PRIMARY KEY,
@@ -56,10 +57,10 @@ CREATE TABLE SinglesMatch (
     Id INT AUTO_INCREMENT PRIMARY KEY ,
     ResultPlayerHome INT,
     ResultPlayerGuest INT,
-    IdPlayerHome VARCHAR(255) NOT NULL,
-    FOREIGN KEY (IdPlayerHome) REFERENCES Player(Pesel),
-    IdPlayerGuest VARCHAR(255) NOT NULL ,
-    FOREIGN KEY (IdPlayerGuest) REFERENCES Player(Pesel),
+    IdPlayerHome INT NOT NULL,
+    FOREIGN KEY (IdPlayerHome) REFERENCES Player(Id),
+    IdPlayerGuest INT NOT NULL ,
+    FOREIGN KEY (IdPlayerGuest) REFERENCES Player(Id),
     IdGame INT NOT NULL,
     FOREIGN KEY (IdGame) REFERENCES Game (Id)
 );

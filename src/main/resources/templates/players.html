@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Players Information</title>
+    <link rel="stylesheet" typle="text/css" href="css/style.css">
+</head>
+<body>
+    <h3>Players List</h3>
+    <div th:each="player, playerIter : ${players}">
+        <ul>
+            <li >
+                <div th:text="${player.nameP+' '+player.surname+'  Club: '+player.team.nameT}"></div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
