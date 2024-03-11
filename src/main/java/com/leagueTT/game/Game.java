@@ -32,9 +32,9 @@ public class Game {
 
     @ManyToOne
     @JoinColumn(name="IdHome")
-    private Team idHome;
+    private Team teamHome;
 
     @ManyToOne
     @JoinColumn(name="IdGuest")
-    private Team idGuest;
+    private Team teamGuest;
 }

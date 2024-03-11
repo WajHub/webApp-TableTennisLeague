@@ -18,5 +18,11 @@
             <li th:text="${player.nameP+' '+player.surname}"></li>
         </ul>
     </div>
+    <h3>Matches</h3>
+    <div th:each="game, gameIter : ${games}" id="match">
+        <div  th:text="${'Kolejka '+game.round+'. '+#dates.format(game.dateOfMatch, 'dd-MM-yyyy')+' '}"> </div>
+        <div  th:text="${game.teamHome.nameT}"> </div>
+    </div>
+
 </body>
 </html>

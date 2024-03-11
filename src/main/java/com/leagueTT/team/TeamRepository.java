@@ -1,5 +1,6 @@
 package com.leagueTT.team;
 
+import com.leagueTT.game.GameRowMapper;
 import com.leagueTT.player.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -82,4 +83,15 @@ public class TeamRepository {
         return jdbcTemplate.query("Select * FROM Player WHERE IdTeam=?",
                 BeanPropertyRowMapper.newInstance(Player.class), idTeam);
     }
+
+    public List getGames(int idTeam) {
+        String sql = "SELECT g.*, th.*, tg.* " +
+                "FROM Game g " +
+                "LEFT JOIN Team th ON g.IdHome = th.Id " +
+                "LEFT JOIN Team tg ON g.IdGuest = tg.Id " +
+                "WHERE g.IdHome = ? OR g.IdGuest = ?" ;
+        return jdbcTemplate.query(sql, new Object[]{idTeam, idTeam},
+                new GameRowMapper());
+    }
+
 }

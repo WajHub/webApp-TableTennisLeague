@@ -17,3 +17,7 @@ img {
     max-width: 50px;
     max-height: 50px;
 }
+.match{
+    padding: 8px;
+    text-align: center;
+}

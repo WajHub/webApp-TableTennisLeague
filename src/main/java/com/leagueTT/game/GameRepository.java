@@ -12,7 +12,7 @@ public class GameRepository {
     public int save(Game game){
         jdbcTemplate.update("INSERT INTO Game(round, dateOfMatch, numberOfSUpporters, resultHome, resultGuest, idHome, idGuest)" +
                 "VALUES(?,?,?,?,?,?,?)",game.getRound(),game.getDateOfMatch(),game.getNumberOfSupporters(),game.getResultHome(),
-                game.getResultGuest(),game.getIdHome(),game.getIdGuest());
+                game.getResultGuest(),game.getTeamHome(),game.getTeamGuest());
         return 1;
     }
 }

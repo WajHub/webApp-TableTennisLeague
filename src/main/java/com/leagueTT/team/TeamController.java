@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(path="/teams")
@@ -29,6 +28,7 @@ public class TeamController {
     public String teamView(Model model, @PathVariable("id") int id){
         model.addAttribute("team",teamService.getTeam(id));
         model.addAttribute("players", teamService.getPlayers(id));
+        model.addAttribute("games", teamService.getGames(id));
         return "team";
     }
 

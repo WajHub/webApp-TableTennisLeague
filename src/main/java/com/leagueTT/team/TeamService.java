@@ -37,4 +37,9 @@ public class TeamService {
     public List<Player> getPlayers(int idTeam){
         return teamRepository.getPlayersFromTeam(idTeam);
     }
+
+    public List getGames(int idTeam) {
+        return teamRepository.getGames(idTeam);
+    }
+
 }
