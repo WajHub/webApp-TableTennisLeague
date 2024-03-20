@@ -5,9 +5,8 @@ import com.leagueTT.player.Player;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Entity
+
 @Data
-@Table(name="SinglesMatch")
 public class SinglesMatch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

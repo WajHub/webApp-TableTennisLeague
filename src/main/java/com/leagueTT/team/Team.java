@@ -7,8 +7,6 @@ import lombok.Data;
 import org.hibernate.annotations.Check;
 
 @Data
-@Entity
-@Table(name="Team")
 public class Team {
 
     @Id

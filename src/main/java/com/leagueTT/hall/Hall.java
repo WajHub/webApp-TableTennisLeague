@@ -5,8 +5,6 @@ import lombok.Data;
 import org.hibernate.annotations.Check;
 
 @Data
-@Entity
-@Table(name="Hall")
 public class Hall {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

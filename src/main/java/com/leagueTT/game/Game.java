@@ -7,8 +7,6 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-@Entity
-@Table(name="Game")
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

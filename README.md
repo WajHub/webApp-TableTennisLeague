@@ -13,10 +13,11 @@
 - Spring MVC
 - MySql
 - Lombok
-- Spring Data JPA
+- Spring JDBC
 - Thymeleaf
 - Flyway
 - H2 
+- Docker
 
 ## Database
 

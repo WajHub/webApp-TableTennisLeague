@@ -8,8 +8,6 @@ import org.hibernate.annotations.Check;
 import java.util.Date;
 
 @Data
-@Entity
-@Table(name = "Player")
 public class Player {
 
     @Id
