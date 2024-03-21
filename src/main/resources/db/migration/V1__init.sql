@@ -64,3 +64,9 @@ CREATE TABLE SinglesMatch (
     IdGame INT NOT NULL,
     FOREIGN KEY (IdGame) REFERENCES Game (Id)
 );
+
+CREATE TABLE Admin(
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    NameA VARCHAR (255) NOT NULL,
+    Password VARCHAR (255) NOT NULL
+);
