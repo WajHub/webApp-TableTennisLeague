@@ -1,9 +1,6 @@
 package com.leagueTT.user;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,9 +13,12 @@ import java.util.List;
 public class User implements UserDetails {
     @Id
     @GeneratedValue
+    @Column(name="Id")
     private Long id;
 
+    @Column(name="NameU")
     private String name;
+    @Column(name="Password")
     private String password;
 
     @Enumerated(EnumType.STRING)
