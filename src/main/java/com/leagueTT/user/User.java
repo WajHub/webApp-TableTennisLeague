@@ -16,11 +16,13 @@ public class User implements UserDetails {
     @Column(name="Id")
     private Long id;
 
-    @Column(name="NameU")
-    private String name;
-    @Column(name="Password")
+    @Column(name="username")
+    private String username;
+
+    @Column(name="password")
     private String password;
 
+    @Column(name="Role")
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -36,7 +38,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return name;
+        return username;
     }
 
     @Override

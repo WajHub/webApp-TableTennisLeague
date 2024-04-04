@@ -65,8 +65,9 @@ CREATE TABLE SinglesMatch (
     FOREIGN KEY (IdGame) REFERENCES Game (Id)
 );
 
-CREATE TABLE User(
+CREATE TABLE _user(
     Id INT AUTO_INCREMENT PRIMARY KEY,
-    NameU VARCHAR (255) NOT NULL,
-    Password VARCHAR (255) NOT NULL
+    username VARCHAR (255) NOT NULL,
+    password VARCHAR (255) NOT NULL,
+    Role VARCHAR(255) NOT NULL
 );

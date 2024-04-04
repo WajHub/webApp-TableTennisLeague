@@ -62,3 +62,4 @@ INSERT INTO SinglesMatch (ResultPlayerHome, ResultPlayerGuest, IdPlayerHome, IdP
      (3, 2, 10, 4, 1);
 UPDATE Game SET ResultHome=3, ResultGuest=1 WHERE (id=1);
 
+INSERT INTO _user (username, password, Role) Values ('admin', '$2a$06$KJQTBYfXtk4NaM/V2YwuZu8r9AFCqNQnn7EIDCugLWkRYf4Uexeui', 'ADMIN');

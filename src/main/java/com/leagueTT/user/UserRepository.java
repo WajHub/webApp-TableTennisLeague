@@ -14,7 +14,7 @@ public class UserRepository {
     JdbcTemplate jdbcTemplate;
 
     public Optional<User> findByName(String name){
-        String sql = "SELECT * FROM Admin WHERE Name = ?";
+        String sql = "SELECT * FROM _user WHERE username = ?";
         return Optional.ofNullable(jdbcTemplate.queryForObject(sql,
                 BeanPropertyRowMapper.newInstance(User.class),
                 name));
