@@ -11,6 +11,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.leagueTT.user.Role.ADMIN;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -19,7 +21,7 @@ public class SecurityConfig {
     private static final String[] WHITE_LIST_URL = {"/css/**", "/js/**", "/images/**",
     "teams/**",
     "players/**",
-    "api/auth"};
+    "api/**"};
 
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
@@ -30,7 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
-                                .requestMatchers("/admin/**").authenticated()
+                                .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
