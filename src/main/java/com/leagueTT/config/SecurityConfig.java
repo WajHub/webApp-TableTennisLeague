@@ -21,7 +21,11 @@ public class SecurityConfig {
     private static final String[] WHITE_LIST_URL = {"/css/**", "/js/**", "/images/**",
     "teams/**",
     "players/**",
-    "api/**"};
+    "api/login",
+    "api/auth",
+    "api/all"};
+
+    private static final String[] BLACK_LIST_URL = {"api/admin/something"};
 
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
@@ -30,9 +34,10 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers(WHITE_LIST_URL)
+                        req.requestMatchers(BLACK_LIST_URL)
+                                .authenticated()
+                                .anyRequest()
                                 .permitAll()
-                                .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)

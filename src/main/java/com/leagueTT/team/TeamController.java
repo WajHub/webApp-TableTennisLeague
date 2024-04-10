@@ -20,7 +20,7 @@ public class TeamController {
     @GetMapping("")
     public String home(Model model){
         model.addAttribute("teams",teamService.getTeams());
-        return "teams";
+        return "public/teams";
     }
 
     @GetMapping("/{id}")

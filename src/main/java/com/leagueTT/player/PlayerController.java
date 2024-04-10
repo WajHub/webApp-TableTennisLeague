@@ -23,13 +23,13 @@ public class PlayerController {
     @GetMapping("/")
     public String players(Model model){
         model.addAttribute("players", playerService.getPlayers());
-        return "players";
+        return "public/players";
     }
 
     @GetMapping("/{id}")
     public String player(Model model, @PathVariable int id){
         model.addAttribute("player", playerService.getPlayer(id));
-        return "player";
+        return "public/player";
     }
 
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script href="../js/login.js"></script>
+    <link rel="stylesheet" typle="text/css" href="../css/style.css">
+    <script src="../js/login.js"></script>
+    
+    <title>Login</title>
+</head>
+<body>
+    <form id="loginForm">
+        <h2>Login</h2>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit" action>Login</button>
+        <p id="error-message" style="color: red;"></p>
+    </form>
+    <script>
+        if(localStorage.key("jwttoken")!=null){
+            login();
+        }
+        else{
+            
+        }
+        
+    </script>
+
+    
+
+</body>
+</html>
