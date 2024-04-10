@@ -19,14 +19,33 @@
         <button type="submit" action>Login</button>
         <p id="error-message" style="color: red;"></p>
     </form>
+
+    <div id="mojElement">
+        <!-- Tutaj zostanie dołączona zawartość z pliku HTML za pomocą JavaScript -->
+    </div>
+
     <script>
-        if(localStorage.key("jwttoken")!=null){
-            login();
-        }
-        else{
-            
-        }
+        login();
+
+        // Pobrac zawartosc pliku adminContnet za pomoca fetch (plik ten ma miec dostep tylko z tokenem)
         
+        // Pobierz zawartość pliku HTML za pomocą fetch
+            fetch('http://localhost:8080/api/admin/content',{
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("jwttoken")
+                }
+            })
+            .then(response => {
+                return response.text();
+            })
+            .then(html => {
+                console.log(html);
+                document.getElementById("mojElement").innerHTML = html;
+            })
+            .catch(error => console.error('Błąd podczas pobierania pliku:', error));
+
     </script>
 
     

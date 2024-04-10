@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(path="/players")
+@RequestMapping(path="api/players")
 public class PlayerController {
 
     private final PlayerService playerService;

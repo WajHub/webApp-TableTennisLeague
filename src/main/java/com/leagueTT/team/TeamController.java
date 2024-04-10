@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path="/teams")
+@RequestMapping(path="api/teams")
 public class TeamController {
     private final TeamService teamService;
 

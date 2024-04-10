@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("api")
 public class UserController {
     @GetMapping("/admin")
-    public String sayHello(){
+    public String admin(){
         return "admin";
     }
 
+    @GetMapping("/admin/content")
+    public String adminContent(){
+        return "adminContent";
+    }
     
 }
