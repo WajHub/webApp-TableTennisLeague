@@ -21,7 +21,7 @@ function login(){
         .then(data => {
             const token = data.token; 
             localStorage.setItem('jwttoken', token);
-            logged();
+            contentAdmin();
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
@@ -30,11 +30,32 @@ function login(){
     });
 }
 
-function logged(){
 
-    document.getElementById('loginForm').style.display = 'none';
 
-    const adminContent = document.createElement('div');
-    adminContent.innerHTML = '<h2>Welcome, Admin!</h2><p>Here is your admin content.</p>';
-    document.body.appendChild(adminContent);
+function contentAdmin(){
+    if(localStorage.getItem("jwttoke")==null){
+        login();
+    }
+    else{
+        fetch('http://localhost:8080/api/admin/content',{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("jwttoken")
+            }
+        })
+        .then(response => {
+            if(response.ok){
+                document.getElementById('loginForm').style.display = 'none';
+                return response.text();
+            }
+            else{
+                return ""
+            }
+        })
+        .then(html => {
+            document.getElementById("adminPanel").innerHTML = html;
+        })
+        .catch(error => console.error('Błąd podczas pobierania pliku:', error));
+    }
 }
