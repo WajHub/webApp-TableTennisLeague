@@ -33,7 +33,7 @@ function login(){
 
 
 function contentAdmin(){
-    if(localStorage.getItem("jwttoke")==null){
+    if(localStorage.getItem("jwttoken")==null){
         login();
     }
     else{

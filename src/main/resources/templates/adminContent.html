@@ -9,9 +9,34 @@
 
 <div class="admin-content">
     <h2>Admin Panel</h2>
-    <p>Witaj w panelu administratora!</p>
-    <p>Tutaj możesz zarządzać treścią, użytkownikami i innymi funkcjami.</p>
+    <p>Hello Admin!</p>
+    <p>You can add and modify matches.</p>
+    <br><br>
+
+    <div class="matches">
+        <h3>Mecze </h3>
+        <div th:each="game, gameIter : ${games}" id="match">
+            <div  th:text="${'Kolejka '+game.round+'.  ('+#dates.format(game.dateOfMatch, 'dd-MM-yyyy')+')  '}"> </div>
+            <div  th:text="${game.teamHome.nameT+' '+game.resultHome+' - '+game.resultGuest+' '+game.teamGuest.nameT}"> </div>
+            <hr>
+        </div>
+    </div>
+<br> <br>
+    <div class="addMatch">
+        <h3>Add Match</h3>
+        <form id="addMatch">
+            <label for="fname">Home Team</label><br>
+                <select th:field="*{teams}">
+                    <option th:each="homeTeam, gameIter : ${teams}" th:value="${homeTeam.id}" th:text="${homeTeam.nameT}"></option>
+                </select> <br> <br>
+            <label for="lname">Guest Team</label><br>
+            <select th:field="*{teams}">
+                <option th:each="homeTeam, gameIter : ${teams}" th:value="${homeTeam.id}" th:text="${homeTeam.nameT}"></option>
+            </select>
+          </form>
+    </div>
 </div>
+
 
 </body>
 </html>
