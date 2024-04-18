@@ -1,3 +1,6 @@
+// TODO 
+// Sprawdzic czy nie wygasl token
+
 function login(){
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault(); 
