@@ -1,13 +1,17 @@
 package com.leagueTT.user;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.leagueTT.game.Game;
 import com.leagueTT.game.GameService;
+import com.leagueTT.team.Team;
 import com.leagueTT.team.TeamService;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 @RequestMapping("api")
@@ -36,9 +40,14 @@ public class UserController {
     }
 
     @PostMapping("/admin/addMatch")
-    public String addMatch(){
-
-        return "redirect:/";
+    public String addMatch(@RequestBody String body){
+        JsonObject data = JsonParser.parseString(body).getAsJsonObject();
+        int homeId = data.get("homeTeamId").getAsInt();
+        int guestId = data.get("guestTeamId").getAsInt();
+        Team homeTeam = teamService.getTeam(homeId);
+        Team guestTeam = teamService.getTeam(guestId);
+        gameService.saveGame(new Game());
+        return "redirect:/api/admin";
     }
     
 }

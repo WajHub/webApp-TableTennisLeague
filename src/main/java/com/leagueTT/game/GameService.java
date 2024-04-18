@@ -18,4 +18,9 @@ public class GameService {
         return gameRepository.getAllGames();
     }
 
+    public int saveGame(Game game){
+        gameRepository.save(game);
+        return 1;
+    }
+
 }

@@ -34,7 +34,6 @@ function login(){
 }
 
 
-
 function contentAdmin(){
     if(localStorage.getItem("jwttoken")==null){
         login();
@@ -58,6 +57,7 @@ function contentAdmin(){
         })
         .then(html => {
             document.getElementById("adminPanel").innerHTML = html;
+            document.getElementById('addMatch').addEventListener('submit', addMatch);
         })
         .catch(error => console.error('Błąd podczas pobierania pliku:', error));
     }

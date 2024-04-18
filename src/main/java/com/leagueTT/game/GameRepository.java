@@ -26,4 +26,5 @@ public class GameRepository {
                 "LEFT JOIN Team tg ON g.IdGuest = tg.Id " ;
         return jdbcTemplate.query(sql, new GameRowMapper());
     }
+    // Dodac wyszukiwanie tylko rozegranych meczow
 }

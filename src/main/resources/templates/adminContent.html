@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Content</title>
-    <script href="../js/addMatch.js"></script>
+    <script href="../js/adminOperations.js"></script>
 </head>
 <body>
 
@@ -23,25 +23,27 @@
         </div>
     </div>
 <br> <br>
-    <div class="addMatch">
+    <div>
         <h3>Add Match</h3>
+
         <form id="addMatch">
-            <label for="homeTeam">Home Team</label><br>
-                <select field="homeTeam">
+            <label for="homeId">Home Team</label><br>
+                <select id="homeId" field="homeTeam">
                     <option th:each="homeTeam, gameIter : ${teams}" th:value="${homeTeam.id}" th:text="${homeTeam.nameT}"></option>
                 </select> <br> <br>
-            <label for="hguestTeam">Guest Team</label><br>
-                <select field="hguestTeam">
+            <label for="guestId">Guest Team</label><br>
+                <select id="guestId" field="hguestTeam">
                     <option th:each="guestTeam, gameIter : ${teams}" th:value="${guestTeam.id}" th:text="${guestTeam.nameT}"></option>
-                </select>
-            <button value="add_Match" action >Add Match</button>
-          </form>
+                </select> <br> <br>
+            <label for="date">Date of match:</label>
+                <input type="date" id="date" name="date">
+            <button type="submit" action >Add Match</button>
+        </form>
+
     </div>
 </div>
 
-<script>
-    document.getElementById("addMatch").addEventListener('submit', addMatch());
-</script>
+
 
 
 </body>
