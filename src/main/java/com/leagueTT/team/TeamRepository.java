@@ -31,7 +31,7 @@ public class TeamRepository {
                 "(Game.ResultHome > 2 AND Game.IdHome=Team.Id) OR (Game.ResultGuest > 2 AND Game.IdGuest=Team.Id)\n" +
                 "THEN 1 END)) AS numberOfWins\n" +
                 "FROM Team LEFT JOIN Game ON Team.Id=Game.IdHome OR Team.Id=Game.IdGuest\n" +
-                "WHERE Team.id=?;",Integer.class, id);
+                "WHERE Team.id=?  AND (Game.ResultGuest=3 OR Game.ResultHome=3);",Integer.class, id);
     }
 
     public int getNumberOfLosesByTeam(int id){
@@ -39,12 +39,12 @@ public class TeamRepository {
                 "(Game.ResultHome < 3 AND Game.IdHome=Team.Id) OR (Game.ResultGuest < 3 AND Game.IdGuest=Team.Id)\n" +
                 "THEN 1 END)) AS numberOfWins\n" +
                 "FROM Team LEFT JOIN Game ON Team.Id=Game.IdHome OR Team.Id=Game.IdGuest\n" +
-                "WHERE Team.id=?;",Integer.class, id);
+                "WHERE Team.id=?  AND (Game.ResultGuest=3 OR Game.ResultHome=3);",Integer.class, id);
     }
 
     public int getNumberOfMatchesByTeam(int id){
         return jdbcTemplate.queryForObject("SELECT count(*) FROM TTLeague.Game\n" +
-                "WHERE IdHome=? OR IdGuest=?;",Integer.class, id,id);
+                "WHERE (IdHome=? OR IdGuest=?) AND (ResultGuest=3 OR ResultHome=3);",Integer.class, id,id);
     }
 
     public Team getTeamById(int id){

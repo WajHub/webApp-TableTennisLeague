@@ -19,8 +19,10 @@
         <div th:each="game, gameIter : ${games}" id="match">
             <div  th:text="${'Round '+game.round+'.  ('+#temporals.format(game.dateOfMatch,'dd-MM-yyyy')+')  '}"> </div>
             <div  th:text="${teams[game.teamHome-1].nameT+' '+game.resultHome+' - '+game.resultGuest+' '+teams[game.teamGuest-1].nameT}"> </div>
-            <input type="button" value="delete" th:onclick="'deleteMatch(\'' + ${game.id} + '\');'">
+            <input type="button" value="Delete" th:onclick="'deleteMatch(\'' + ${game.id} + '\');'">
+            <br>
             <hr>
+            <br>
         </div>
     </div>
 <br> <br>
@@ -35,6 +37,10 @@
             <label for="guestId">Guest Team</label><br>
                 <select id="guestId" field="hguestTeam">
                     <option th:each="guestTeam, gameIter : ${teams}" th:value="${guestTeam.id}" th:text="${guestTeam.nameT}"></option>
+                </select> <br> <br>
+            <label for="round">Round</label><br>
+                <select id="round" field="round">
+                    <option th:each="i: ${#numbers.sequence(1, 6)}" th:value="${i}" th:text="${i}"></option>
                 </select> <br> <br>
             <label for="date">Date of match:</label>
                 <input type="date" id="date" name="date">

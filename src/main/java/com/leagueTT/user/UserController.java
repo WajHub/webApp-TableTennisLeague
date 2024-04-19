@@ -15,8 +15,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
-
-
 @Controller
 @RequestMapping("api")
 public class UserController {
@@ -50,11 +48,12 @@ public class UserController {
         int guestId = data.get("guestTeamId").getAsInt();
         Team homeTeam = teamService.getTeam(homeId);
         Team guestTeam = teamService.getTeam(guestId);
+        int round = data.get("round").getAsInt();
 
         String dateString = data.get("date").getAsString();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date =  LocalDate.parse(dateString, formatter);
-        gameService.saveGame(new Game(-1,  date, -1, 0, 0, homeTeam.getId(), guestTeam.getId()));
+        gameService.saveGame(new Game(round,  date, -1, 0, 0, homeTeam.getId(), guestTeam.getId()));
         return "redirect:/api/admin";
     }
 

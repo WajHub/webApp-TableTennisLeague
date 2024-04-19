@@ -20,10 +20,12 @@ function addMatch(event){
     var homeTeamId = document.getElementById('homeId').value; 
     var guestTeamId = document.getElementById('guestId').value;
     var date = document.getElementById('date').value;
+    var round = document.getElementById('round').value;
     const data = {
         'homeTeamId': homeTeamId,
         'guestTeamId': guestTeamId,
-        'date': date
+        'date': date,
+        'round': round
     };
     console.log(data);
 

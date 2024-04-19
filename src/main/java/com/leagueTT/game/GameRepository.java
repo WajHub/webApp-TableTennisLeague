@@ -30,5 +30,4 @@ public class GameRepository {
         String sql = "DELETE FROM Game WHERE Id=?";
         return jdbcTemplate.update(sql, id);
     }
-    // Dodac wyszukiwanie tylko rozegranych meczow
 }

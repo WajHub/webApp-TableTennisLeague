@@ -27,8 +27,9 @@ public class TeamController {
     public String teamView(Model model, @PathVariable("id") int id){
         model.addAttribute("team",teamService.getTeam(id));
         model.addAttribute("players", teamService.getPlayers(id));
+        model.addAttribute("teams", teamService.getTeams());
         model.addAttribute("games", teamService.getGames(id));
-        return "team";
+        return "public/team";
     }
 
 
