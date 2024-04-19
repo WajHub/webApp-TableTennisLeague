@@ -23,4 +23,8 @@ public class GameService {
         return 1;
     }
 
+    public int delete(int id) {
+        gameRepository.delete(id);
+        return 1;
+    }
 }

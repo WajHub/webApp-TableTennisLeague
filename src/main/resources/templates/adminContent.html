@@ -15,10 +15,11 @@
     <br><br>
 
     <div class="matches">
-        <h3>Mecze </h3>
+        <h3>Matches </h3>
         <div th:each="game, gameIter : ${games}" id="match">
-            <div  th:text="${'Kolejka '+game.round+'.  ('+#dates.format(game.dateOfMatch, 'dd-MM-yyyy')+')  '}"> </div>
-            <div  th:text="${game.teamHome.nameT+' '+game.resultHome+' - '+game.resultGuest+' '+game.teamGuest.nameT}"> </div>
+            <div  th:text="${'Round '+game.round+'.  ('+#temporals.format(game.dateOfMatch,'dd-MM-yyyy')+')  '}"> </div>
+            <div  th:text="${teams[game.teamHome-1].nameT+' '+game.resultHome+' - '+game.resultGuest+' '+teams[game.teamGuest-1].nameT}"> </div>
+            <input type="button" value="delete" th:onclick="'deleteMatch(\'' + ${game.id} + '\');'">
             <hr>
         </div>
     </div>

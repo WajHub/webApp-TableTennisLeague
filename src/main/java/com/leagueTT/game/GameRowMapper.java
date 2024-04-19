@@ -12,7 +12,7 @@ public class GameRowMapper implements RowMapper {
         Game game = new Game();
         game.setId(rs.getLong("Id"));
         game.setRound(rs.getInt("Round"));
-        game.setDateOfMatch(rs.getDate("DateOfMatch"));
+        game.setDateOfMatch(rs.getDate("DateOfMatch").toLocalDate());
         game.setNumberOfSupporters(rs.getInt("NumberOfSupporters"));
         game.setResultHome(rs.getInt("ResultHome"));
         game.setResultGuest(rs.getInt("ResultGuest"));
@@ -27,8 +27,8 @@ public class GameRowMapper implements RowMapper {
         teamGuest.setNameT(rs.getString("tg.NameT"));
         teamGuest.setLogoURL(rs.getString("tg.LogoURL"));
 
-        game.setTeamHome(teamHome);
-        game.setTeamGuest(teamGuest);
+        game.setTeamHome(teamHome.getId());
+        game.setTeamGuest(teamGuest.getId());
         return game;
     }
 }

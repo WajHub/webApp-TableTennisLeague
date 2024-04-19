@@ -4,10 +4,12 @@ import com.leagueTT.team.Team;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
 public class Game {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Id")
@@ -17,7 +19,7 @@ public class Game {
     private int round;
 
     @Column(name = "DateOfMatch", nullable = false)
-    private Date dateOfMatch;
+    private LocalDate dateOfMatch;
 
     @Column(name = "NumberOfSupporters")
     private Integer numberOfSupporters;
@@ -30,9 +32,22 @@ public class Game {
 
     @ManyToOne
     @JoinColumn(name="IdHome")
-    private Team teamHome;
+    private Long teamHome;
 
     @ManyToOne
     @JoinColumn(name="IdGuest")
-    private Team teamGuest;
+    private Long teamGuest;
+
+    public Game(int round, LocalDate dateOfMatch, Integer numberOfSupporters, Integer resultHome, Integer resultGuest, Long teamHome, Long teamGuest) {
+        this.round = round;
+        this.dateOfMatch = dateOfMatch;
+        this.numberOfSupporters = numberOfSupporters;
+        this.resultHome = resultHome;
+        this.resultGuest = resultGuest;
+        this.teamHome = teamHome;
+        this.teamGuest = teamGuest;
+    }
+
+    public Game() {
+    }
 }

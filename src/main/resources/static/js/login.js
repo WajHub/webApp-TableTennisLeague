@@ -57,7 +57,7 @@ function contentAdmin(){
         })
         .then(html => {
             document.getElementById("adminPanel").innerHTML = html;
-            document.getElementById('addMatch').addEventListener('submit', addMatch);
+            unlockOperations();
         })
         .catch(error => console.error('Błąd podczas pobierania pliku:', error));
     }

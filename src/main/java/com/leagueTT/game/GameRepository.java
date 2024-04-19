@@ -1,7 +1,6 @@
 package com.leagueTT.game;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +24,11 @@ public class GameRepository {
                 "LEFT JOIN Team th ON g.IdHome = th.Id " +
                 "LEFT JOIN Team tg ON g.IdGuest = tg.Id " ;
         return jdbcTemplate.query(sql, new GameRowMapper());
+    }
+
+    public int delete(int id) {
+        String sql = "DELETE FROM Game WHERE Id=?";
+        return jdbcTemplate.update(sql, id);
     }
     // Dodac wyszukiwanie tylko rozegranych meczow
 }

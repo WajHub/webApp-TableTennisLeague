@@ -25,7 +25,7 @@ public class SecurityConfig {
     "api/auth",
     "api/all"};
 
-    private static final String[] BLACK_LIST_URL = {"api/admin/content"};
+    private static final String[] BLACK_LIST_URL = {"api/admin/*"};
 
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
