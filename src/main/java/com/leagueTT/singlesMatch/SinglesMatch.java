@@ -21,13 +21,21 @@ public class SinglesMatch {
 
     @ManyToOne
     @JoinColumn(name="IdGame")
-    private Game game;
+    private Long game;
 
     @OneToOne
     @JoinColumn(name="IdPlayerHome")
-    private Player playerHome;
+    private Long playerHome;
 
     @OneToOne
     @JoinColumn(name="IdPlayerGuest")
-    private Player playerGuest;
+    private Long playerGuest;
+
+    public SinglesMatch(Integer resultPlayerHome, Integer resultPlayerGuest, Long game, Long playerHome, Long playerGuest) {
+        this.resultPlayerHome = resultPlayerHome;
+        this.resultPlayerGuest = resultPlayerGuest;
+        this.game = game;
+        this.playerHome = playerHome;
+        this.playerGuest = playerGuest;
+    }
 }

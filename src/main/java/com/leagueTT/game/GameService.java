@@ -23,8 +23,22 @@ public class GameService {
         return 1;
     }
 
+    public Game getGame(long id){
+        return  gameRepository.getGame(id);
+    }
+
     public int delete(int id) {
         gameRepository.delete(id);
+        return 1;
+    }
+
+    public int incrementResultHome(Long gameId) {
+        gameRepository.incrementResultHome(gameId);
+        return 1;
+    }
+
+    public int  incrementResultGuest(Long game) {
+        gameRepository.incrementResultGuest(game);
         return 1;
     }
 }

@@ -4,6 +4,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.leagueTT.game.Game;
 import com.leagueTT.game.GameService;
+import com.leagueTT.player.PlayerService;
+import com.leagueTT.singlesMatch.SingleMatchService;
+import com.leagueTT.singlesMatch.SinglesMatch;
 import com.leagueTT.team.Team;
 import com.leagueTT.team.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +25,15 @@ public class UserController {
     private final GameService gameService;
 
     private final TeamService teamService;
+    private final PlayerService playerService;
+    private final SingleMatchService singleMatchService;
 
     @Autowired
-    public UserController(GameService gameService, TeamService teamService) {
+    public UserController(GameService gameService, TeamService teamService, PlayerService playerService,SingleMatchService singleMatchService) {
         this.gameService = gameService;
         this.teamService = teamService;
+        this.playerService = playerService;
+        this.singleMatchService = singleMatchService;
     }
 
     @GetMapping("/admin")
@@ -38,9 +45,12 @@ public class UserController {
     public String adminContent(Model model){
         model.addAttribute("games", gameService.getGames());
         model.addAttribute("teams", teamService.getTeams());
+        model.addAttribute("players", playerService.getPlayers());
+//        model.addAttribute("singleMatches", singleMatchService.getAll());
         return "adminContent";
     }
 
+    // TODO: Sprawdzenie poprawnosci danych
     @PostMapping("/admin/addMatch")
     public String addMatch(@RequestBody String body){
         JsonObject data = JsonParser.parseString(body).getAsJsonObject();
@@ -57,9 +67,24 @@ public class UserController {
         return "redirect:/api/admin";
     }
 
+
     @PostMapping("/admin/deleteMatch/{id}")
     public String deleteMatch(@PathVariable("id") int id){
+        singleMatchService.deleteMatches(id);
         gameService.delete(id);
+        return "redirect:/api/admin";
+    }
+
+    // TODO: Sprawdzenie poprawnosci danych
+    @PostMapping("/admin/addSingleMatch")
+    public String addSingleMatch(@RequestBody String param){
+        JsonObject data = JsonParser.parseString(param).getAsJsonObject();
+        int resultHome = data.get("resultPlayerHome").getAsInt();
+        int resultGuest = data.get("resultPlayerGuest").getAsInt();
+        long idGame = data.get("idGame").getAsInt();
+        long playerHome = data.get("playerHome").getAsInt();
+        long playerGuest = data.get("playerGuest").getAsInt();
+        singleMatchService.save(new SinglesMatch(resultHome, resultGuest, idGame, playerHome, playerGuest));
         return "redirect:/api/admin";
     }
     

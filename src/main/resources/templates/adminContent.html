@@ -11,16 +11,76 @@
 <div class="admin-content">
     <h2>Admin Panel</h2>
     <p>Hello Admin!</p>
-    <p>You can add and modify matches.</p>
+    <p>You can add, delete and update matches.</p>
     <br><br>
 
     <div class="matches">
         <h3>Matches </h3>
         <div th:each="game, gameIter : ${games}" id="match">
-            <div  th:text="${'Round '+game.round+'.  ('+#temporals.format(game.dateOfMatch,'dd-MM-yyyy')+')  '}"> </div>
+            <div  th:text="${'Round '+game.round+'.  ('+#temporals.format(game.dateOfMatch,'dd-MM-yyyy')+') ID: '+game.id}"> </div>
             <div  th:text="${teams[game.teamHome-1].nameT+' '+game.resultHome+' - '+game.resultGuest+' '+teams[game.teamGuest-1].nameT}"> </div>
             <input type="button" value="Delete" th:onclick="'deleteMatch(\'' + ${game.id} + '\');'">
             <br>
+             <!-- FINISHED MATCH  -->
+            <div th:if="${game.resultHome == 3 or game.resultGuest == 3}">
+                Finished
+            </div>
+
+            <!-- NOT FINISHED MATCH-->
+            <div th:unless="${game.resultHome == 3 or game.resultGuest == 3}">
+                <h4>Add Single Match</h4>
+                <form class="addSingleMatch" th:id="'form_' + ${game.id}">
+                    <select style="display: none;" name="idGame"></select>
+                        <option th:value="${game.id}">
+                        </option>
+                    </select>
+                    <label for="playerHomeId"></label>
+                    <div th:text="${'Player ('+teams[game.teamHome-1].nameT+')'}"></div>
+                    <select  name="playerHome">
+                        <option th:each="player, playerIter : ${players}" 
+                                th:value="${player.id}" 
+                                th:text="${player.nameP}"
+                                th:if="${teams[player.team-1]==teams[game.teamHome-1]}">
+                        </option>
+                    </select>
+
+                    <label for="resultPlayerHomeId"></label>
+                    Result: 
+                    <select name="resultPlayerHome">
+                        <option th:each="i: ${#numbers.sequence(0, 3)}" 
+                                th:value="${i}" 
+                                th:text="${i}"></option>
+                    </select>
+
+                    <label for="playerGuestId"></label>
+                    <div th:text="${'Player ('+teams[game.teamGuest-1].nameT+')'}"></div>
+                    <select name="playerGuest">
+                        <option th:each="player, playerIter : ${players}" 
+                                th:value="${player.id}" 
+                                th:text="${player.nameP}"
+                                th:if="${teams[player.team-1]==teams[game.teamGuest-1]}">
+                        </option>
+                    </select>
+
+                    <label for="resultPlayerGuestId"></label>
+                    Result: 
+                    <select name="resultPlayerGuest">
+                        <option th:each="i: ${#numbers.sequence(0, 3)}" 
+                                th:value="${i}" 
+                                th:text="${i}"></option>
+                    </select>
+                    <br>
+                    <button type="submit" action >Add Single Match</button>
+                </form>
+            </div>
+
+            <div th:each="singleMatch, singleIter : ${singleMatches}">
+                <div th:if="${singleMatch.idGame == game.id}">
+                    
+                </div>
+            </div>
+
+
             <hr>
             <br>
         </div>
@@ -32,15 +92,21 @@
         <form id="addMatch">
             <label for="homeId">Home Team</label><br>
                 <select id="homeId" field="homeTeam">
-                    <option th:each="homeTeam, gameIter : ${teams}" th:value="${homeTeam.id}" th:text="${homeTeam.nameT}"></option>
+                    <option th:each="homeTeam, gameIter : ${teams}" 
+                            th:value="${homeTeam.id}" 
+                            th:text="${homeTeam.nameT}"></option>
                 </select> <br> <br>
             <label for="guestId">Guest Team</label><br>
                 <select id="guestId" field="hguestTeam">
-                    <option th:each="guestTeam, gameIter : ${teams}" th:value="${guestTeam.id}" th:text="${guestTeam.nameT}"></option>
+                    <option th:each="guestTeam, gameIter : ${teams}" 
+                            th:value="${guestTeam.id}" 
+                            th:text="${guestTeam.nameT}"></option>
                 </select> <br> <br>
             <label for="round">Round</label><br>
                 <select id="round" field="round">
-                    <option th:each="i: ${#numbers.sequence(1, 6)}" th:value="${i}" th:text="${i}"></option>
+                    <option th:each="i: ${#numbers.sequence(1, 6)}" 
+                            th:value="${i}" 
+                            th:text="${i}"></option>
                 </select> <br> <br>
             <label for="date">Date of match:</label>
                 <input type="date" id="date" name="date">

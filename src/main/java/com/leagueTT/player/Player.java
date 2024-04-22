@@ -48,5 +48,5 @@ public class Player {
 
     @ManyToOne
     @JoinColumn(name = "IdTeam")
-    private Team team;
+    private Long team;
 }

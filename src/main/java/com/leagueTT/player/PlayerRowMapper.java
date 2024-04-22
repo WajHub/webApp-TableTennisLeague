@@ -27,7 +27,7 @@ public class PlayerRowMapper implements RowMapper {
         team.setNameT(rs.getString("th.NameT"));
         team.setLogoURL(rs.getString("th.LogoURL"));
 
-        player.setTeam(team);
+        player.setTeam(team.getId());
         return player;
     }
 }
