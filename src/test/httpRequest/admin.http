@@ -1,0 +1,17 @@
+### Login again and update the token
+POST http://localhost:8080/api/auth
+Content-Type: application/json
+
+{
+  "email":  "admin",
+  "password": "admin123"
+}
+
+> {% client.global.set("jwt", response.body.jwt);  %}
+
+### Query the Demo endpoint after password change
+GET http://localhost:8080/api/admin/content
+Authorization: Bearer {{jwt}}
+
+### logout
+POST http://localhost:8080/api/admin/logout

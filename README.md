@@ -7,6 +7,10 @@ The website is about table tennis teams performing in the same league. Fans Tabl
 
 'SingleMatch' - Match between two players in sepcially 'Game'.
 
+Admin data:
+- Username: admin
+- Password: admin123
+
 ## Preview
 
 ## Requirements
@@ -33,4 +37,5 @@ The website is about table tennis teams performing in the same league. Fans Tabl
 
 ### Set up Database
 Configure database according to application.properties file, or update this file with yours properties.
+
 

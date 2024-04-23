@@ -9,6 +9,8 @@ import com.leagueTT.singlesMatch.SingleMatchService;
 import com.leagueTT.singlesMatch.SinglesMatch;
 import com.leagueTT.team.Team;
 import com.leagueTT.team.TeamService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,6 +42,8 @@ public class UserController {
     public String admin(){
         return "admin";
     }
+
+
 
     @GetMapping("/admin/content")
     public String adminContent(Model model){

@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import static com.leagueTT.user.Role.ADMIN;
 
@@ -41,7 +42,13 @@ public class SecurityConfig {
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .logout((logout) ->
+                        logout.invalidateHttpSession(true)
+                                .clearAuthentication(true)
+                                .logoutRequestMatcher(new AntPathRequestMatcher("/api/admin/logout"))
+                                .logoutSuccessUrl("/api/teams")
+                                .permitAll());
         return http.build();
     }
 

@@ -62,3 +62,8 @@ function contentAdmin(){
         .catch(error => console.error('Błąd podczas pobierania pliku:', error));
     }
 }
+
+function logout(){
+    localStorage.removeItem("jwttoken");
+    window.location.replace("http://localhost:8080/api/admin");
+}
