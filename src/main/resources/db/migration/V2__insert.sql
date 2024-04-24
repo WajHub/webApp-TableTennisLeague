@@ -50,16 +50,18 @@ INSERT INTO Player(Pesel, NameP, Surname, DateOfBirth,Nationality, Height,Weight
 
 UPDATE Team SET IdCaptain = 10 WHERE (Id = 4);
 
--- Inserting Games
-INSERT INTO Game (Round, DateOfMatch, NumberOfSupporters, ResultHome, ResultGuest, IdHome, IdGuest) VALUES
-    (1, '2024-03-01', 800, NULL, NULL, 1, 2);
-INSERT INTO Game (Round, DateOfMatch, NumberOfSupporters, ResultHome, ResultGuest, IdHome, IdGuest) VALUES
-    (1, '2024-03-01', 800, NULL, NULL, 3, 4);
-INSERT INTO SinglesMatch (ResultPlayerHome, ResultPlayerGuest, IdPlayerHome, IdPlayerGuest, IdGame) VALUES
-     (3, 0, 10, 5, 1),
-     (0, 3, 2, 4, 1),
-     (3, 1, 3, 6, 1),
-     (3, 2, 10, 4, 1);
-UPDATE Game SET ResultHome=3, ResultGuest=1 WHERE (id=1);
-
 INSERT INTO _user (username, password, Role) Values ('admin', '$2a$06$KJQTBYfXtk4NaM/V2YwuZu8r9AFCqNQnn7EIDCugLWkRYf4Uexeui', 'ADMIN');
+
+-- -- Inserting Games
+-- INSERT INTO Game (Round, DateOfMatch, NumberOfSupporters, ResultHome, ResultGuest, IdHome, IdGuest) VALUES
+--     (1, '2024-03-01', 800, NULL, NULL, 1, 2);
+-- INSERT INTO Game (Round, DateOfMatch, NumberOfSupporters, ResultHome, ResultGuest, IdHome, IdGuest) VALUES
+--     (1, '2024-03-01', 800, NULL, NULL, 3, 4);
+-- INSERT INTO SinglesMatch (ResultPlayerHome, ResultPlayerGuest, IdPlayerHome, IdPlayerGuest, IdGame) VALUES
+--      (3, 0, 10, 5, 1),
+--      (0, 3, 2, 4, 1),
+--      (3, 1, 3, 6, 1),
+--      (3, 2, 10, 4, 1);
+-- UPDATE Game SET ResultHome=3, ResultGuest=1 WHERE (id=1);
+--
+

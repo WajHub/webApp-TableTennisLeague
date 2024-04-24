@@ -12,7 +12,7 @@ Admin data:
 - Password: admin123
 
 ## Preview
-
+[![Watch the preview](preview/preview.png)](https://youtu.be/JCCNVafgOIk)
 ## Requirements
 
 - Java 8 or later
