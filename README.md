@@ -19,7 +19,7 @@ Password is encrypted by **BCrypt Function** and is stored in database. After co
 
 
 ### Authorization
-In request to endpoints from Black_List *(/api/admin/\*)* I send JWTToken, which is located in LocalSotrage (Client-side).
+In request to endpoints from Black_List *(/api/admin/\*)* I send JWT, which is located in LocalSotrage (Client-side).
 
 
 ## Preview
