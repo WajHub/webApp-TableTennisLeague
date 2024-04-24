@@ -7,12 +7,25 @@ The website is about table tennis teams performing in the same league. Fans Tabl
 
 'SingleMatch' - Match between two players in sepcially 'Game'.
 
+
 Admin data:
-- Username: admin
-- Password: admin123
+
+    Username: admin
+    Password: admin123
+
+### Authentication
+
+Password is encrypted by **BCrypt Function** and is stored in database. After correct Authentication I generate JSON Web Token and save in LocalStorage. JWT has 10 min. time expiration.
+
+
+### Authorization
+In request to endpoints from Black_List *(/api/admin/\*)* I send JWTToken, which is located in LocalSotrage (Client-side).
+
 
 ## Preview
 [![Watch the preview](preview/preview.png)](https://youtu.be/JCCNVafgOIk)
+Click the image above to watch the demo video.
+
 ## Requirements
 
 - Java 8 or later
@@ -29,6 +42,7 @@ Admin data:
 - Flyway
 - H2 
 - Docker
+
 
 ## Database
 
