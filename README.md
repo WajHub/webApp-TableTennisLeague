@@ -22,10 +22,6 @@ Password is encrypted by **BCrypt Function** and is stored in database. After co
 In request to endpoints from Black_List *(/api/admin/\*)* I send JWT, which is located in LocalSotrage (Client-side).
 
 
-## Preview
-[![Watch the preview](preview/preview.png)](https://youtu.be/JCCNVafgOIk)
-Click the image above to watch the demo video.
-
 ## Requirements
 
 - Java 8 or later
